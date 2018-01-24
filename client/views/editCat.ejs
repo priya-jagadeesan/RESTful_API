@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cats World</title>
+</head>
+<body style="margin:100px;">
+    <h3> Edit Cat Info </h3>
+    <form action="/cats/<%= data._id %>" method="post">
+        <label for="name"> Name :</label>
+        <input type="text" name="name" value="<%= data.name %>" ><br>
+        <br><br>
+        <label for="name"> Food :</label>
+        <input type="text" name="food" value="<%= data.food %>" ><br>
+        <br><br>
+        <label for="color"> Color :</label>
+        <select name="color" value="<%= data.color %>" >
+            <option>black</option>
+            <option>gray</option>
+            <option>white</option>
+            <option>orange</option>
+        </select>
+        <br><br>
+        <label for="sound"> Sound :</label>
+        <select name="sound" value="<%= data.sound %>" >
+            <option>purr</option>
+            <option>meow</option>
+            <option>hiss</option>
+            <option>growl</option>
+            <option>trill</option>
+            <option>grunt</option>
+        </select>
+        <br><br>
+        <label for="owner"> Owner :</label>
+        <input style = "width : 200px;" type="text" name="owner" value="<%= data.owner %>" ><br>
+        <br><br><br><br>
+        <input type="submit" value="Update!">
+    </form>
+    <p><a href="/">Go back</a></p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class ="root">
+  <div class = "new">
+    <h1>New Task</h1> 
+    <div *ngIf="errors">
+      <p>Error : {{ errors }}</p>
+    </div>
+    <form (submit)="onCreateUpdate()">
+      <!-- use the json pipe to see how newTask changes in real time -->
+      <!-- <p> {{ newTask | json }} </p> -->
+      <label for="newTask.title">Title :</label>
+      <input type="text" name="newTask.title" [(ngModel)]="newTask.title" />
+      <br><br>
+      <label for="newTask.title">Description :</label>
+      <input type="text" name="newTask.description" [(ngModel)]="newTask.description" />
+      <p *ngIf="cancelTask">
+        <button class="edit" (click) = "onCancel()">Cancel</button>
+      </p>
+      <p *ngIf="editTask">
+        <input class="edit" type="submit" value="Update">
+      </p>
+      <p *ngIf="!editTask">
+        <input id="create" type="submit" value="Create">
+      </p>
+    </form>
+    <br><br><br><br><br><br>
+  </div>
+
+  
+  <div *ngIf="task">
+    <div id="task">
+      <h3> Task details </h3>
+      <p><b>Title : {{ task[0].title }}</b></p><br>
+      <p>Description : {{ task[0].description }}</p><br>
+    </div>
+  </div>
+
+  <div class="details">
+    <h1>Task List</h1> 
+    <!-- <button (click) = "getTasksFromServiceB()">Click to get all tasks</button> -->
+    <div *ngFor="let task of tasks">   
+      <div id="tasks">
+        <p><a (click) = "onDisplay(task._id)"><b>{{ task.title }}</b></a></p><br>
+        <p>{{ task.description }}</p> <br>
+        <button class="edit" (click) = "onUpdate(task)">Edit</button>
+        <button id="delete" (click) = "onDelete(task._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
